@@ -1,11 +1,8 @@
 package com.example.nyethack
 
 import java.io.File
-import java.sql.Struct
 import kotlin.random.Random
-import kotlin.system.measureNanoTime
-import kotlin.system.measureTimeMillis
-import kotlin.time.measureTime
+
 
 private const val TAVERN_MASTER = "Moo"
 private const val TAVERN_NAME = "$TAVERN_MASTER's Folly"
@@ -30,7 +27,7 @@ private val lastNames = setOf("Ironfoot", "Fernsworth", "Baggins", "Downstrider"
 
 fun visitTavern() {
 
-    narrate("$player.name enters $TAVERN_NAME")
+    narrate("${player.name} enters $TAVERN_NAME")
 
    // viewMenu(menuData)
 
@@ -45,7 +42,7 @@ fun visitTavern() {
     )
 
 
-    narrate("$player.name sees several patrons in the tavern:")
+    narrate("${player.name} sees several patrons in the tavern:")
     narrate(patrons.joinToString())
 
     val favoriteMenuItems = patrons.flatMap{ getFavoriteMenuItems(it) }
@@ -74,7 +71,7 @@ fun visitTavern() {
             patronGold -= departingPatrons.toSet()
         }
         .forEach { patron ->
-            narrate("$player.name sees $patron departing the tavern")
+            narrate("${player.name} sees $patron departing the tavern")
         }
 
     narrate("There are still some patrons in the tavern")
@@ -169,7 +166,7 @@ private fun massivePlaceOrder(
 }*/
 
 private fun displayPatronBalances(patronGold: Map<String, Double>) {
-    narrate("$player.name intuitively knows how much money each patron has")
+    narrate("${player.name} intuitively knows how much money each patron has")
     patronGold.forEach { patron, balance ->
         narrate("$patron has ${"%.2f".format(balance)} gold")
     }
