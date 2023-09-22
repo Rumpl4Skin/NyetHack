@@ -5,22 +5,9 @@ fun main() {
     narrate("Welcome to NyetHack!")
     val playerName = promptHeroName()
     player = Player(playerName)
-
-    narrate("${player.name} is ${player.title}")
     //changeNarratorMood()
-    player.prophesize()
 
-    var currentRoom: Room = Tavern()
-    val mortality = if (player.isImmortal) "an immortal" else "a mortal"
-    narrate(
-        "${player.name} of ${player.hometown}, ${player.title}," +
-                "is in ${currentRoom.description()}"
-    )
-    narrate("${player.name}, $mortality, has ${player.healthPoints} health points")
-    currentRoom.enterRoom()
-    player.castFireball()
-    player.prophesize()
-
+    Game.play()
 }
 
 private fun promptHeroName(): String {
@@ -37,6 +24,3 @@ private fun promptHeroName(): String {
     return "Madrigal"
 }
 
-object Game{
-
-}
