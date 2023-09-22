@@ -1,13 +1,26 @@
 package com.example.nyethack
-var heroName: String = ""
-fun main(){
-    heroName = promptHeroName()
 
-    var age : String ="Mark"
+lateinit var player: Player
+fun main() {
+    narrate("Welcome to NyetHack!")
+    val playerName = promptHeroName()
+    player = Player(playerName)
 
+    narrate("${player.name} is ${player.title}")
     //changeNarratorMood()
-    narrate("$heroName, ${createTitle(heroName)}, heads to the town square")
-    visitTavern()
+    player.prophesize()
+
+    var currentRoom: Room = Tavern()
+    val mortality = if (player.isImmortal) "an immortal" else "a mortal"
+    narrate(
+        "${player.name} of ${player.hometown}, ${player.title}," +
+                "is in ${currentRoom.description()}"
+    )
+    narrate("${player.name}, $mortality, has ${player.healthPoints} health points")
+    currentRoom.enterRoom()
+    player.castFireball()
+    player.prophesize()
+
 }
 
 private fun promptHeroName(): String {
@@ -24,14 +37,6 @@ private fun promptHeroName(): String {
     return "Madrigal"
 }
 
-fun createTitle(name: String):String {
-    return when {
-        name.all{it.isDigit()} -> "The Identifiable"
-        name.none { it.isLetter() } -> "The Witness Protection Member"
-        name.count { it.lowercase() in "aeiou" } > 4 -> "The Master of Vowel"
-        name.all {it.isUpperCase() } -> "Outstanding" //выдающийся
-        name.count{ it.lowercase() in ("a".."z")} > 10 -> "Spacious" //пространный
-        name.lowercase() == name.lowercase().reversed() -> "Palindrome Carrier"
-        else -> "The Renowned Hero"
-    }
+object Game{
+
 }
