@@ -6,7 +6,6 @@ fun main() {
     val playerName = promptHeroName()
     player = Player(playerName)
     //changeNarratorMood()
-
     Game.play()
 }
 

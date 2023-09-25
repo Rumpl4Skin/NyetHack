@@ -16,7 +16,7 @@ class TownSquare : Room("The Town Square"){
         ringBell()
     }
 
-    fun ringBell() {
+    public fun ringBell() {
         narrate("The bell tower announces the hero's presence: $bellSound")
     }
 }

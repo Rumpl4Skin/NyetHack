@@ -3,10 +3,10 @@ package com.example.nyethack
 class Player(
     initialName: String,
     val hometown: String = "Neversummer",
-    var healthPoints: Int,
+    override var healthPoints: Int,
     val isImmortal: Boolean
-){
-    var name = initialName
+): Fightable{
+    override var name = initialName
         get() = field.replaceFirstChar { it.uppercase() }
         private set(value) {
             field = value.trim()
@@ -32,6 +32,9 @@ class Player(
         ).random()
     }
 
+    override val diceCount: Int = 3
+    override val diceSides: Int = 4
+
     init {
         require(healthPoints>0){"health points must be greater than zero"}
         require(name.isNotBlank()){"Player must have a name"}
@@ -56,5 +59,15 @@ class Player(
     fun prophesize() {
         narrate("$name thinks about their future")
         narrate("A fortune teller told Madrigal, \"$prophecy\"")
+    }
+
+    override fun takeDamage(damage: Int) {
+        if (!isImmortal) {
+            healthPoints -= damage
+        }
+    }
+
+    override fun attack(opponent: Fightable) {
+        TODO("Not yet implemented")
     }
 }
