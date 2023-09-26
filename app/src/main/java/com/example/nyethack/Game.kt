@@ -5,8 +5,8 @@ import kotlin.random.Random
 object Game {
     private val worldMap = listOf(
         listOf(TownSquare(), Tavern(), Room("Back Room")),
-        listOf(Room("A Long Corridor"), Room("A Generic Room")),
-        listOf(Room("The Dungeon"))
+        listOf(MonsterRoom("A Long Corridor"), Room("A Generic Room")),
+        listOf(MonsterRoom("The Dungeon"))
     )
 
     private var currentRoom: Room = worldMap[0][0]
