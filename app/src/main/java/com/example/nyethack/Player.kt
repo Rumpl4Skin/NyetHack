@@ -66,8 +66,4 @@ class Player(
             healthPoints -= damage
         }
     }
-
-    override fun attack(opponent: Fightable) {
-        TODO("Not yet implemented")
-    }
 }
