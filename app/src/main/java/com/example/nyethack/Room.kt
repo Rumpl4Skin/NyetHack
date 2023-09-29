@@ -1,5 +1,7 @@
 package com.example.nyethack
 
+import kotlin.random.Random
+
 open class Room(val name: String) {
     protected open val status = "Calm"
     open fun description() = "$name (Currently: $status)"
@@ -8,10 +10,11 @@ open class Room(val name: String) {
     }
 
 }
-class TownSquare : Room("The Town Square"){
+
+class TownSquare : Room("The Town Square") {
     override val status = "Bustling"
     private var bellSound = "GWONG"
-   final override fun enterRoom(){
+    final override fun enterRoom() {
         narrate("The villagers rally and cheer as the hero enters")
         ringBell()
     }
@@ -23,9 +26,19 @@ class TownSquare : Room("The Town Square"){
 
 class MonsterRoom(
     name: String,
-    var monster: Monster? = Goblin()
-):Room(name){
-    override fun description()=super.description()+ " (Creature: ${monster?.description ?: "None"})"
+    var monster: Monster? = null
+) : Room(name) {
+    init {
+        when (Random.nextInt(0, 4)) {
+            0 -> monster = null
+            1 -> monster = Goblin()
+            2 -> monster = Wolf()
+            3 -> monster = Dragon()
+        }
+    }
+
+    override fun description() =
+        super.description() + " (Creature: ${monster?.description ?: "None"})"
 
     override fun enterRoom() {
         if (monster == null) {

@@ -7,6 +7,7 @@ object Game {
     private val worldMap = listOf(
         listOf(TownSquare(), Tavern(), Room("Back Room")),
         listOf(MonsterRoom("A Long Corridor"), Room("A Generic Room")),
+        listOf(MonsterRoom("The Dungeon")),
         listOf(MonsterRoom("The Dungeon"))
     )
 
