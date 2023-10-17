@@ -5,7 +5,7 @@ fun main() {
     narrate("Welcome to NyetHack!")
     val playerName = promptHeroName()
     player = Player(playerName)
-    //changeNarratorMood()
+    changeNarratorMood()
 
     Game.play()
 }
@@ -15,12 +15,10 @@ private fun promptHeroName(): String {
         // Выводит message желтым цветом
         "\u001b[33;1m$message\u001b[0m"
     }
-    /*val input = readLine()
+    val input = readLine()
     require(input != null && input.isNotEmpty()) {
     "The hero must have a name."
     }
-    return input*/
-    println("Madrigal")
-    return "Madrigal"
+    return input
 }
 
